@@ -1,0 +1,6 @@
+FROM golang:latest
+LABEL authors="tiyee"
+RUN go mod download -x github.com/redis/go-redis/v9@latest
+RUN go mod download -x  github.com/tiyee/holydramon@latest
+RUN go mod download -x github.com/wechatpay-apiv3/wechatpay-go@latest
+RUN go mod download -x github.com/karlseguin/ccache/v3@latest
