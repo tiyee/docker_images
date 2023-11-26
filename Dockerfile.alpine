@@ -6,8 +6,9 @@ RUN echo "https://mirrors.aliyun.com/alpine/latest-stable/main/" > /etc/apk/repo
 && apk update  \
 && apk upgrade  \
 && mkdir -p /etc/ssl/certs/ \
-&& apk add --no-cache    tzdata  openssl ca-certificates && update-ca-certificates -f -v  \
+&& apk add --no-cache    tzdata  openssl ca-certificates   \
 && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime  \
 && echo "Asia/Shanghai" > /etc/timezone \
 && apk del tzdata \
 && rm -rf /var/cache/apk/* /tmp/* /var/tmp/* $HOME/.cache
+RUN update-ca-certificates -f -v
