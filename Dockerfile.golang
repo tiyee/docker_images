@@ -1,5 +1,6 @@
 FROM golang:latest
 LABEL authors="tiyee"
+ENV  GOPROXY=https://goproxy.cn
 RUN go mod download -x github.com/redis/go-redis/v9@latest
 RUN go mod download -x  github.com/tiyee/holydramon@latest
 RUN go mod download -x github.com/wechatpay-apiv3/wechatpay-go@latest
