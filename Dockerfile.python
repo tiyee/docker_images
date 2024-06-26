@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM registry.cn-hongkong.aliyuncs.com/aiuni/python:3.10
 LABEL authors="avar"
 ENV PYTHONUNBUFFERED 1
 
