@@ -12,4 +12,5 @@ RUN go mod download -x github.com/gin-gonic/gin@latest
 RUN go mod download -x github.com/go-sql-driver/mysql@latest
 RUN go mod download -x gopkg.in/yaml.v3@latest
 RUN go mod download -x go.uber.org/zap@latest
+RUN go mod download -x github.com/allegro/bigcache/v3@latest
 
