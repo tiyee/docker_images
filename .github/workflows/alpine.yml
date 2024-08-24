@@ -6,6 +6,8 @@ name: Alpine Build
 # documentation.
 
 on:
+  schedule:
+    - cron:  '30 5 * * 1'
   workflow_dispatch:
 
 env:
