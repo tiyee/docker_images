@@ -1,9 +1,9 @@
-FROM registry.cn-hongkong.aliyuncs.com/aiuni/python:3.10
+FROM python:3.10
 LABEL authors="avar"
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update  && apt upgrade -y
 
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai'>/etc/timezone
-RUN pip install --upgrade pip -i https://mirrors.ivolces.com/pypi/simple/
+RUN pip install --upgrade pip 
 
