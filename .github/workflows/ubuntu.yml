@@ -71,7 +71,7 @@ jobs:
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
         with:
           context: .
-          file: ./Dockerfile.python
+          file: ./Dockerfile.ubuntu
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/${{ env.IMAGE_NAME }}:3.10
           labels: ${{ steps.meta.outputs.labels }}
