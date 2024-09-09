@@ -67,13 +67,24 @@ jobs:
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
-        id: build-and-push
+        id: build-and-push-latest
         uses: docker/build-push-action@v6
         with:
           context: .
           file: ./Dockerfile.ubuntu
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/${{ env.IMAGE_NAME }}:latest
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Build and push Docker image
+        id: build-and-push-2204
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile.ubuntu.22.04
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/${{ env.IMAGE_NAME }}:22.04
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
