@@ -16,4 +16,5 @@ RUN go mod download -x gopkg.in/yaml.v3@latest
 RUN go mod download -x go.uber.org/zap@latest
 RUN go mod download -x github.com/allegro/bigcache/v3@latest
 RUN go mod download -x golang.org/x/exp@latest
+RUN go mod download -x github.com/tiyee/gokit@latest
 
