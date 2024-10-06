@@ -1,0 +1,14 @@
+FROM nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
+BEL authors="aiuni"
+ENV PYTHONUNBUFFERED 1
+SHELL ["/bin/bash", "-c"]
+ENV TZ=Asia/Shanghai \
+    DEBIAN_FRONTEND=noninteractive
+RUN  sed -i s@/archive.ubuntu.com/@/mirrors.ivolces.com/@g /etc/apt/sources.list
+RUN  sed -i s@/security.ubuntu.com/@/mirrors.ivolces.com/@g /etc/apt/sources.list
+RUN apt update  && apt upgrade -y && apt install -y  tzdata   python3-pip
+
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai'>/etc/timezone
+RUN pip config set global.index-url https://mirrors.ivolces.com/pypi/simple
+RUN pip install --upgrade pip
+RUN pip3 install oss2 tos httpx[http2] requests redis pillow
