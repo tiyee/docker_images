@@ -88,7 +88,17 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
+      - name: Build and push Docker image (cuda)
+        id: build-and-push-cuda
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile.ubuntu.cuda
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/ubuntu-cuda:22.04
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
       # repository is public to avoid leaking data.  If you would like to publish
