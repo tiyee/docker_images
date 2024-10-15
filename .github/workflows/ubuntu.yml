@@ -95,7 +95,11 @@ jobs:
           context: .
           file: ./Dockerfile.ubuntu.cuda
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/ubuntu-cuda:22.04
+          #tags: ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/ubuntu-cuda:22.04
+          tags: |
+            ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/ubuntu-cuda:22.04
+            ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/ubuntu-cuda:latest
+            ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/ubuntu-cuda:12.6.2-cudnn-runtime-ubuntu22.04 
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
