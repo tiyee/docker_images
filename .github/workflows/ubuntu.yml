@@ -78,7 +78,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Build and push Docker image 22.004
-        id: build-and-push-22.04
+        id: build-and-push-2204
         uses: docker/build-push-action@v6
         with:
           context: .
