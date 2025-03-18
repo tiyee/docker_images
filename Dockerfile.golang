@@ -17,4 +17,8 @@ RUN go mod download -x go.uber.org/zap@latest
 RUN go mod download -x github.com/allegro/bigcache/v3@latest
 RUN go mod download -x golang.org/x/exp@latest
 RUN go mod download -x github.com/tiyee/gokit@latest
+RUN go mod download -x github.com/gorilla/websocket@latest
+RUN go mod download -x github.com/RediSearch/redisearch-go@latest
+RUN go mod download -x github.com/gomodule/redigo@latest
+RUN go mod download -x github.com/stripe/stripe-go/v81@latest
 
