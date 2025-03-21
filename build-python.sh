@@ -11,6 +11,10 @@ docker buildx build --push --no-cache \
 	-t "${registy}" \
 	--platform=linux/amd64 \
 	-f Dockerfile.python .
-
+docker buildx build --push --no-cache \
+	--build-arg RELEASE="1.0.0" \
+	-t "registry.cn-beijing.aliyuncs.com/tiyee/python:latest" \
+	--platform=linux/amd64 \
+	-f Dockerfile.python.latest .
 docker buildx prune -f
 sudo sysctl net.ipv6.conf.all.disable_ipv6=0
