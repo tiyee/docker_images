@@ -15,10 +15,11 @@ email-validator==2.2.0
 pydantic_settings==2.8.1
 aliyun-python-sdk-core==2.16.0
 aliyun-python-sdk-sts==3.1.2
-cryptography==43.0.1
+cryptography==44.0.1
 zhipuai==2.1.5.20250106
 openai==1.68.2
 redis==5.2.1
 celery==5.4.0
 langchain==0.3.21
 langchain_community==0.3.20
+pdfminer.six==20250327
