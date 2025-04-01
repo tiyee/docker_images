@@ -21,8 +21,10 @@ openai==1.68.2
 redis==5.2.1
 celery==5.4.0
 langchain==0.3.21
-langchain_community==0.3.20
+langchain_community==0.3.21
 langchain_openai==0.3.10
 pdfminer.six==20250327
 oss2
 tenacity
+langgraph
+faiss-cpu==1.10.0
