@@ -28,3 +28,4 @@ oss2
 tenacity
 langgraph
 faiss-cpu==1.10.0
+langchain-experimental==0.3.4
