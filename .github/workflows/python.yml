@@ -67,7 +67,7 @@ jobs:
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image 3.10
-        id: build-and-push-python3.10
+        id: build-and-push-python310
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -89,7 +89,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Build and push Docker image 3.9
-        id: build-and-push-python3.9
+        id: build-and-push-python39
         uses: docker/build-push-action@v6
         with:
           context: .
