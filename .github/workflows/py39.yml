@@ -75,7 +75,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Build and push Docker image 3.9
+      - name: Build and push Docker image 3.12
         id: build-and-push-python312
         uses: docker/build-push-action@v6
         with:
