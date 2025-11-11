@@ -24,3 +24,4 @@ RUN go mod download -x github.com/stripe/stripe-go/v81@latest
 RUN go mod download -x github.com/stripe/stripe-go/v82@latest
 RUN go mod download -x github.com/AgoraIO-Community/agora-rest-client-go@latest
 
+ENV GOEXPERIMENT=jsonv2
