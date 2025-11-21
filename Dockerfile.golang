@@ -7,6 +7,7 @@ RUN go mod download -x github.com/karlseguin/ccache/v3@latest
 RUN go mod download -x gorm.io/gorm@latest
 RUN go mod download -x github.com/alibabacloud-go/darabonba-openapi/v2@latest
 RUN go mod download -x github.com/alibabacloud-go/dysmsapi-20170525/v3@latest
+RUN go mod download -x github.com/alibabacloud-go/cdn-20180510/v5@latest
 RUN go mod download -x github.com/aliyun/aliyun-oss-go-sdk@latest
 RUN go mod download -x github.com/alibabacloud-go/sts-20150401/v2@latest
 RUN go mod download -x google.golang.org/api@latest
