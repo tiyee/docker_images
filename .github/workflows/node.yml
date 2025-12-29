@@ -13,6 +13,8 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ${{ secrets.REGISTRY }}
+  USERNAME: ${{ secrets.USERNAME }}
+  NAMESPACE: ${{ secrets.NAMESPACE }}
   # github.repository as <account>/<repo>
   IMAGE_NAME: node
 
@@ -53,7 +55,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ secrets.USERNAME }}
+          username: ${{ env en.USERNAME
           password: ${{ secrets.PASSWORD }}
 
       # Extract metadata (tags, labels) for Docker
@@ -62,7 +64,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
-          images: ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.NAMESPACE }}/${{ env.IMAGE_NAME }}
 
       - name: Build and push Docker node
         id: build-and-push-node
@@ -71,7 +73,7 @@ jobs:
           context: .
           file: ./Dockerfile.node-22
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/node:22-alpine
+          tags: ${{ env.REGISTRY }}/${{ env.NAMESPACE }}/node:22-alpine
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -82,7 +84,7 @@ jobs:
           context: .
           file: ./Dockerfile.nginx-1.25
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/nginx:1.25-alpine
+          tags: ${{ env.REGISTRY }}/${{ env.NAMESPACE }}/nginx:1.25-alpine
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
