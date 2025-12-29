@@ -55,7 +55,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ env en.USERNAME
+          username: ${{ env.USERNAME }}
           password: ${{ secrets.PASSWORD }}
 
       # Extract metadata (tags, labels) for Docker
