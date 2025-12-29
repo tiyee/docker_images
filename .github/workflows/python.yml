@@ -13,6 +13,8 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ${{ secrets.REGISTRY }}
+  USERNAME: ${{ secrets.USERNAME }}
+  NAMESPACE: ${{ secrets.NAMESPACE }}
   # github.repository as <account>/<repo>
   IMAGE_NAME: python
 
@@ -53,7 +55,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ secrets.USERNAME }}
+          username: ${{ env.USERNAME }}
           password: ${{ secrets.PASSWORD }}
 
       # Extract metadata (tags, labels) for Docker
@@ -62,7 +64,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
-          images: ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.NAMESPACE }}/${{ env.IMAGE_NAME }}
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
@@ -73,7 +75,7 @@ jobs:
           context: .
           file: ./Dockerfile.python
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/${{ env.IMAGE_NAME }}:3.10
+          tags: ${{ env.REGISTRY }}/${{ env.NAMESPACE }}/${{ env.IMAGE_NAME }}:3.10
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -84,7 +86,7 @@ jobs:
           context: .
           file: ./Dockerfile.python.latest
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.REGISTRY }}/${{ env.NAMESPACE }}/${{ env.IMAGE_NAME }}:latest
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -95,7 +97,7 @@ jobs:
           context: .
           file: ./Dockerfile.python-3.9
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ secrets.NAMESPACE }}/${{ env.IMAGE_NAME }}:3.9
+          tags: ${{ env.REGISTRY }}/${{ env.NAMESPACE }}/${{ env.IMAGE_NAME }}:3.9
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
