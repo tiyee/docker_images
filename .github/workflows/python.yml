@@ -101,3 +101,14 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - name: Build and push Docker image 3.12
+        id: build-and-push-python312
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile.python-3.12
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REGISTRY }}/${{ env.NAMESPACE }}/${{ env.IMAGE_NAME }}:3.12
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
