@@ -92,6 +92,8 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          provenance: false
+          sbom: false
       - name: Build and push Docker image 3.9
         id: build-and-push-python39
         uses: docker/build-push-action@v7.3.0
@@ -103,6 +105,8 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          provenance: false
+          sbom: false
       - name: Build and push Docker image 3.12
         id: build-and-push-python312
         uses: docker/build-push-action@v7.3.0
@@ -114,3 +118,5 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          provenance: false
+          sbom: false
